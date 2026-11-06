@@ -1,0 +1,345 @@
+
+/* ==============================
+   1. DASAR HALAMAN
+============================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fff8f5;
+    color: #59464b;
+    line-height: 1.6;
+}
+
+/* ==============================
+   2. HEADER
+============================== */
+header {
+    background: linear-gradient(135deg, #f8b9c8, #f7a9b9);
+    color: #70434e;
+    text-align: center;
+    padding: 45px 20px;
+    border-bottom: 5px solid #fce0e5;
+    position: relative;
+}
+
+header h1 {
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+header h1::before {
+    content: "♡ ";
+}
+
+header p {
+    font-size: 15px;
+    color: #80545e;
+}
+
+/* ==============================
+   3. NAVIGASI
+============================== */
+nav {
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 16px;
+    box-shadow: 0 3px 12px rgba(180, 120, 130, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav a {
+    text-decoration: none;
+    color: #986b75;
+    font-weight: 650;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background: #ffe5eb;
+    color: #d76f8b;
+    transform: translateY(-2px);
+}
+
+/* ==============================
+   4. KONTEN UTAMA
+============================== */
+main {
+    max-width: 1150px;
+    margin: 35px auto;
+    padding: 0 25px;
+}
+
+section {
+    background: #fff;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(200, 145, 155, 0.10);
+    border: 1px solid #fce8e9;
+    scroll-margin-top: 90px;
+}
+
+section h2 {
+    color: #d77991;
+    font-size: 23px;
+    margin-bottom: 25px;
+    padding-bottom: 12px;
+    border-bottom: 2px dashed #f5d4dc;
+}
+
+/* ==============================
+   5. DASHBOARD CARD
+============================== */
+.ringkasan {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    padding: 27px 20px;
+    text-align: center;
+    border-radius: 18px;
+    transition: 0.3s;
+    border: 1px solid transparent;
+}
+
+.card:nth-child(1) {
+    background: #ffe6ed;
+    border-color: #fbd0dc;
+}
+
+.card:nth-child(2) {
+    background: #fff0df;
+    border-color: #f8dfc3;
+}
+
+.card:nth-child(3) {
+    background: #eee8ff;
+    border-color: #ded3fa;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 18px rgba(180, 120, 140, 0.12);
+}
+
+.card h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: #80616b;
+}
+
+.card p {
+    font-size: 38px;
+    font-weight: 800;
+    color: #c86e89;
+}
+
+/* ==============================
+   6. FORM MENU
+============================== */
+#form-menu {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+#form-menu input {
+    flex: 1;
+    min-width: 150px;
+    padding: 13px 15px;
+    background: #fffafa;
+    border: 1px solid #f2dce1;
+    border-radius: 12px;
+    outline: none;
+    font-size: 14px;
+    color: #59464b;
+    transition: 0.3s;
+}
+
+#form-menu input:focus {
+    border-color: #ed9db2;
+    box-shadow: 0 0 0 3px rgba(237, 157, 178, 0.15);
+    background: white;
+}
+
+#form-menu input::placeholder {
+    color: #b99ca3;
+}
+
+/* ==============================
+   7. TOMBOL
+============================== */
+button {
+    background: #e98fa8;
+    color: white;
+    border: none;
+    padding: 13px 22px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(220, 130, 155, 0.15);
+}
+
+button:hover {
+    background: #d87593;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(220, 130, 155, 0.25);
+}
+
+/* ==============================
+   8. TABEL
+============================== */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 13px;
+    overflow: hidden;
+    border: 1px solid #f5e3e6;
+}
+
+thead {
+    background: #f9c6d3;
+    color: #754d59;
+}
+
+th {
+    padding: 15px 12px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+td {
+    padding: 14px 12px;
+    text-align: center;
+    font-size: 14px;
+    border-top: 1px solid #f6e9eb;
+}
+
+tbody tr {
+    background: #fff;
+    transition: 0.2s;
+}
+
+tbody tr:nth-child(even) {
+    background: #fff8f8;
+}
+
+tbody tr:hover {
+    background: #fff0f3;
+}
+
+/* ==============================
+   9. FOOTER
+============================== */
+footer {
+    background: #f5bdca;
+    color: #79515c;
+    text-align: center;
+    padding: 22px;
+    margin-top: 45px;
+    font-size: 14px;
+}
+
+/* ==============================
+   10. RESPONSIVE TABLET
+============================== */
+@media screen and (max-width: 768px) {
+    header h1 {
+        font-size: 27px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    nav a {
+        padding: 9px 12px;
+        font-size: 13px;
+    }
+
+    main {
+        padding: 0 15px;
+    }
+
+    section {
+        padding: 22px 17px;
+    }
+
+    .ringkasan {
+        grid-template-columns: 1fr;
+    }
+
+    #form-menu {
+        flex-direction: column;
+    }
+
+    #form-menu input,
+    #form-menu button {
+        width: 100%;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+/* ==============================
+   11. RESPONSIVE HP
+============================== */
+@media screen and (max-width: 480px) {
+    header {
+        padding: 35px 15px;
+    }
+
+    header h1 {
+        font-size: 23px;
+    }
+
+    header p {
+        font-size: 13px;
+    }
+
+    nav a {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+
+    section h2 {
+        font-size: 20px;
+    }
+
+    .card p {
+        font-size: 32px;
+    }
+
+    footer {
+        font-size: 12px;
+    }
+}
