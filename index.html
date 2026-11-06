@@ -4,89 +4,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Pengelolaan Kantin Kampus</title>
+    <title>KantinKu - Kantin Kampus</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Kantin Kampus</h1>
-        <p>Sistem Pengelolaan Kantin Kampus</p>
+    <header class="navbar">
+        <a href="#" class="logo">🍜 KantinKu</a>
+
+        <nav>
+            <a href="#beranda">Beranda</a>
+            <a href="#menu">Menu</a>
+            <a href="#pesanan">Pesanan Saya</a>
+            <a href="#admin">Kelola Kantin</a>
+        </nav>
+
+        <button id="cart-shortcut">🛒 Keranjang (<span id="cart-count">0</span>)</button>
     </header>
 
-    <nav>
-        <a href="#dashboard">Dashboard</a>
-        <a href="#menu">Kelola Menu</a>
-        <a href="#pesanan">Kelola Pesanan</a>
-    </nav>
-
     <main>
-        <section id="dashboard">
-            <h2>Dashboard</h2>
-            <div class="ringkasan">
-                <div class="card">
-                    <h3>Total Menu</h3>
-                    <p id="total-menu">0</p>
-                </div>
-                <div class="card">
-                    <h3>Total Pesanan</h3>
-                    <p id="total-pesanan">0</p>
-                </div>
-                <div class="card">
-                    <h3>Pesanan Selesai</h3>
-                    <p id="pesanan-selesai">0</p>
-                </div>
+        <!-- HALAMAN BERANDA -->
+        <section id="beranda" class="hero">
+            <div>
+                <p class="label">KANTIN KAMPUS</p>
+                <h1>Lapar di sela kuliah?<br>
+                    <span>Pesan aja di KantinKu!</span>
+                </h1>
+                <p>
+                    Temukan makanan favoritmu, pesan dengan mudah,
+                    dan pantau pesanan tanpa harus antre lama.
+                </p>
+                <a href="#menu" class="tombol-utama">Lihat Menu</a>
+            </div>
+
+            <div class="hero-image">
+                <img
+                    src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800"
+                    alt="Makanan"
+                >
             </div>
         </section>
 
-        <section id="menu">
-            <h2>Kelola Menu</h2>
+        <!-- DAFTAR MENU -->
+        <section id="menu" class="bagian">
+            <div class="judul-bagian">
+                <p class="label">PILIHAN MAKANAN</p>
+                <h2>Menu Kantin</h2>
+                <p>Pilih makanan dan minuman favoritmu.</p>
+            </div>
 
-            <form id="form-menu">
-                <input type="text" id="nama-menu"
-                    placeholder="Nama menu" required>
+            <div class="filter-menu" id="stand-filters"></div>
 
-                <input type="number" id="harga-menu"
-                    placeholder="Harga menu" min="1" required>
+            <input
+                type="search"
+                id="search-menu"
+                placeholder="Cari makanan..."
+            >
 
-                <input type="number" id="stok-menu"
-                    placeholder="Stok menu" min="0" required>
-
-                <button type="submit">Tambah Menu</button>
-            </form>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nama Menu</th>
-                        <th>Harga</th>
-                        <th>Stok</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody id="daftar-menu"></tbody>
-            </table>
+            <div id="customer-menu" class="menu-grid"></div>
         </section>
 
-        <section id="pesanan">
-            <h2>Kelola Pesanan</h2>
+        <!-- PESANAN SAYA -->
+        <section id="pesanan" class="bagian">
+            <div class="judul-bagian">
+                <p class="label">RIWAYAT PEMESANAN</p>
+                <h2>Pesanan Saya</h2>
+                <p>Lihat perkembangan pesananmu.</p>
+            </div>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nama Pelanggan</th>
-                        <th>Menu</th>
-                        <th>Jumlah</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody id="daftar-pesanan"></tbody>
-            </table>
+            <div class="form-pencarian">
+                <input
+                    type="text"
+                    id="lookup-name"
+                    placeholder="Masukkan nama pelanggan"
+                >
+                <button id="lookup-orders">Cari Pesanan</button>
+            </div>
+
+            <div id="customer-orders"></div>
+        </section>
+
+        <!-- HALAMAN ADMIN -->
+        <section id="admin" class="bagian">
+            <div class="judul-bagian">
+                <p class="label">HALAMAN PENGELOLA</p>
+                <h2>Kelola Kantin</h2>
+                <p>Kelola menu, stok, pesanan, dan retur.</p>
+            </div>
+
+            <div class="admin-tabs">
+                <button class="admin-tab active" data-admin-tab="menu-admin">
+                    Kelola Menu
+                </button>
+                <button class="admin-tab" data-admin-tab="order-admin">
+                    Pesanan Masuk
+                </button>
+                <button class="admin-tab" data-admin-tab="return-admin">
+                    Pengajuan Retur
+                </button>
+            </div>
+
+            <!-- TAMBAH DAN EDIT MENU -->
+            <div id="menu-admin" class="admin-panel active">
+                <div class="panel">
+                    <h3 id="menu-form-heading">Tambah Menu Baru</h3>
+
+                    <form id="menu-form">
+                        <input type="hidden" id="edit-menu-id">
+
+                        <input
+                            type="text"
+                            id="menu-name"
+                            placeholder="Nama makanan"
+                            required
+                        >
+
+                        <input
+                            type="text"
+                            id="menu-stand"
+                            placeholder="Nama stand"
+                            required
+                        >
+
+                        <input
+                            type="number"
+                            id="menu-price"
+                            placeholder="Harga"
+                            min="1"
+                            required
+                        >
+
+                        <input
+                            type="number"
+                            id="menu-stock"
+                            placeholder="Jumlah stok"
+                            min="0"
+                            required
+                        >
+
+                        <input
+                            type="url"
+                            id="menu-image"
+                            placeholder="Alamat gambar (opsional)"
+                        >
+
+                        <button type="submit" id="save-menu-btn">
+                            Tambah Menu
+                        </button>
+
+                        <button type="button" id="cancel-edit" class="hidden">
+                            Batal
+                        </button>
+                    </form>
+                </div>
+
+                <div class="panel">
+                    <h3>Daftar Menu</h3>
+
+                    <input
+                        type="search"
+                        id="admin-menu-search"
+                        placeholder="Cari menu..."
+                    >
+
+                    <div class="table-scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nama Menu</th>
+                                    <th>Stand</th>
+                                    <th>Harga</th>
+                                    <th>Stok</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-menu-table"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PESANAN MASUK -->
+            <div id="order-admin" class="admin-panel">
+                <div class="panel">
+                    <h3>Daftar Pesanan Masuk</h3>
+
+                    <div class="table-scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Pelanggan</th>
+                                    <th>Menu</th>
+                                    <th>Jumlah</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-order-table"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PENGAJUAN RETUR -->
+            <div id="return-admin" class="admin-panel">
+                <div class="panel">
+                    <h3>Daftar Pengajuan Retur</h3>
+
+                    <div class="table-scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Pelanggan</th>
+                                    <th>Nomor Pesanan</th>
+                                    <th>Alasan</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-return-table"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
+    <!-- KERANJANG -->
+    <div id="cart-backdrop" class="drawer-backdrop"></div>
+
+    <aside id="cart-drawer" class="cart-drawer">
+        <button id="close-cart" class="close-btn">×</button>
+        <h2>Keranjang Saya</h2>
+
+        <div id="cart-items"></div>
+
+        <h3>Total: <span id="cart-total">Rp0</span></h3>
+
+        <form id="checkout-form">
+            <input
+                type="text"
+                id="customer-name"
+                placeholder="Nama pelanggan"
+                required
+            >
+            <button type="submit">Buat Pesanan</button>
+        </form>
+    </aside>
+
+    <div id="toast" class="toast"></div>
+
     <footer>
-        <p>&copy; 2026 Sistem Pengelolaan Kantin Kampus</p>
+        <h3>KantinKu</h3>
+        <p>Teman makan di sela kesibukan kampus.</p>
     </footer>
 
     <script src="script.js"></script>
