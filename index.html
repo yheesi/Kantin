@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pengelolaan Kantin Kampus</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Kantin Kampus</h1>
+        <p>Sistem Pengelolaan Kantin Kampus</p>
+    </header>
+
+    <nav>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#menu">Kelola Menu</a>
+        <a href="#pesanan">Kelola Pesanan</a>
+    </nav>
+
+    <main>
+        <section id="dashboard">
+            <h2>Dashboard</h2>
+            <div class="ringkasan">
+                <div class="card">
+                    <h3>Total Menu</h3>
+                    <p id="total-menu">0</p>
+                </div>
+                <div class="card">
+                    <h3>Total Pesanan</h3>
+                    <p id="total-pesanan">0</p>
+                </div>
+                <div class="card">
+                    <h3>Pesanan Selesai</h3>
+                    <p id="pesanan-selesai">0</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu">
+            <h2>Kelola Menu</h2>
+
+            <form id="form-menu">
+                <input type="text" id="nama-menu"
+                    placeholder="Nama menu" required>
+
+                <input type="number" id="harga-menu"
+                    placeholder="Harga menu" min="1" required>
+
+                <input type="number" id="stok-menu"
+                    placeholder="Stok menu" min="0" required>
+
+                <button type="submit">Tambah Menu</button>
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama Menu</th>
+                        <th>Harga</th>
+                        <th>Stok</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="daftar-menu"></tbody>
+            </table>
+        </section>
+
+        <section id="pesanan">
+            <h2>Kelola Pesanan</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama Pelanggan</th>
+                        <th>Menu</th>
+                        <th>Jumlah</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="daftar-pesanan"></tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Sistem Pengelolaan Kantin Kampus</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
